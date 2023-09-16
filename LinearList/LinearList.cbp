@@ -32,7 +32,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="public1.H" />
+		<Unit filename="sqlist.CPP" />
+		<Unit filename="sqlist.H" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

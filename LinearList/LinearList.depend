@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1694847858 source:e:\projects\datastructure\linearlist\sqlist.cpp
+	"public1.H"
+	"sqlist.H"
+
+1694672010 e:\projects\datastructure\linearlist\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1694674684 e:\projects\datastructure\linearlist\sqlist.h
+
