@@ -1,5 +1,8 @@
 # depslib dependency file v1.0
-1694847858 source:e:\projects\datastructure\linearlist\sqlist.cpp
+1694853109 source:e:\projects\datastructure\linearlist\sqlist.cpp
+	<iostream>
+	<vector>
+	<iomanip>
 	"public1.H"
 	"sqlist.H"
 

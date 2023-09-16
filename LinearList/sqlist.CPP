@@ -1,5 +1,12 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+
 #include"public1.H"
 #include"sqlist.H"
+
+using namespace std;
+
 Status InitList(SqList &L)
 {
     //构造一个空的顺序表
@@ -143,7 +150,25 @@ Status PriorElem(SqList L,ElemType cur_e,ElemType &pre_e)
      return ERROR; //未找到
  }
 
-int main()
+ Status DeleteAllX(SqList &L, ElemType x)
+ {
+     int valid_index = 0;
+     for (int i = 0; i < L.length; i++)
+     {
+         if (L.elem[i] != x)
+         {
+             L.elem[valid_index] = L.elem[i];
+             valid_index++;
+         }
+     }
+     L.length = valid_index;
+ }
+
+ // 函数声明 用于显示菜单
+void displayMenu();
+void displayList(const SqList &L);
+
+int main(int argc, char *argv[])
 {
     /*
     ======================================================================
@@ -194,6 +219,86 @@ int main()
     ======================================================================
     */
 
+    SqList L;
+    ElemType e;
+    Status i;
+    int j;
 
+    // 初始化线性表
+    i = InitList(L);
+    cout << "L已初始化" << endl;
+
+    while (true)
+    {
+        displayMenu(); // 显示菜单
+        int choice;
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "请输入要插入的数据：";
+            cin >> j;
+            ListInsert(L, 1, j);
+            cout << "插入 " << j << " 后：" << endl;
+            displayList(L);
+            break;
+
+        case 2:
+            cout << "请输入要删除的数据：";
+            cin >> j;
+            ListDelete(L, LocateElem(L, j, comp), e);
+            cout << "删除 " << j << " 后：" << endl;
+            displayList(L);
+            break;
+
+        case 3:
+            cout << "请输入要删除的数据：";
+            cin >> j;
+            DeleteAllX(L, j);
+            cout << "删除所有 " << j << " 后：" << endl;
+            displayList(L);
+            break;
+
+        case 4:
+            DestroyList(L);
+            cout << "退出程序。" << endl;
+            return 0;
+
+        default:
+            cout << "无效的选项，请重新选择。" << endl;
+        }
+    }
     return 1;
+}
+
+// 显示菜单
+void displayMenu()
+{
+    system("cls"); // 清除屏幕
+    cout << "------------------------" << endl;
+    cout << "算法测试界面" << endl;
+    cout << "------------------------" << endl;
+    cout << "请选择操作：" << endl;
+    cout << "1. 插入数据" << endl;
+    cout << "2. 删除数据" << endl;
+    cout << "3. **删除线性表中所有带有固定值的数据元素**" << endl;
+    cout << "4. 退出" << endl;
+    cout << "------------------------" << endl;
+    cout << "请选择：";
+}
+
+// 显示线性表
+void displayList(const SqList &L)
+{
+    cout << "线性表数据：";
+    for (int i = 0; i < L.length; i++)
+    {
+        cout << setw(4) << L.elem[i];
+    }
+    cout << endl;
+    cout << "------------------------" << endl;
+    cout << "按 Enter 键继续...";
+    cin.ignore();
+    cin.get(); // 等待用户按 Enter 键
 }
