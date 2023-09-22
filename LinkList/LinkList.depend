@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1695393927 source:e:\projects\datastructure\linklist\linklist.cpp
+	"public1.H"
+	"linklist.h"
+
+1695375518 e:\projects\datastructure\linklist\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1695392906 e:\projects\datastructure\linklist\linklist.h
+
