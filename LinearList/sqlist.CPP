@@ -40,7 +40,8 @@ Status comp(ElemType c1, ElemType c2)
 }
 
 int LocateElem(SqList L, ElemType e,Status (* compare)(ElemType, ElemType))
-{ //根据数据元素的值，返回它在线性表L中的位置
+{
+    //根据数据元素的值，返回它在线性表L中的位置
     int i=0;
     while ((i<=L.length)&&(!compare(*(L.elem+i-1),e)))
         i++;
@@ -121,7 +122,8 @@ void print(ElemType c)
 }
 
 Status ListTraverse(SqList L,void(* visit)(ElemType))
-{ //按序输出顺序表的各个元素值
+{
+    //按序输出顺序表的各个元素值
     int i;
     for(i=1;i<=L.length;i++)
         visit(*(L.elem+i-1));
@@ -162,16 +164,11 @@ Status PriorElem(SqList L,ElemType cur_e,ElemType &pre_e)
          }
      }
      L.length = valid_index;
+     return OK;
  }
-
- // 函数声明 用于显示菜单
-void displayMenu();
-void displayList(const SqList &L);
 
 int main(int argc, char *argv[])
 {
-    /*
-    ======================================================================
     //初始化线性表
     SqList L;
     ElemType e;
@@ -213,92 +210,32 @@ int main(int argc, char *argv[])
     ListDelete(L,3,e);
     ListTraverse(L,print);
 
+    //测试查询前驱元素
+    int test_curent_element = 0;
+    int test_prior_element = 0;
+    printf("\n\n**测试查询前驱元素**\n");
+    printf("请输入要查询的元素：");
+    scanf("%d", &test_curent_element);
+    if (PriorElem(L, test_curent_element, test_prior_element))
+    {
+        printf("您输入的元素前驱为：%d\n", test_prior_element);
+    }
+    else{
+        printf("错误！请尝试重新输入！\n");
+    }
+
+    //测试删除所有指定元素
+    int test_to_delete_element = 0;
+    printf("\n\n**测试删除所有指定元素**\n");
+    printf("请输入要删除的元素：");
+    scanf("%d", &test_to_delete_element);
+    DeleteAllX(L, test_to_delete_element);
+    printf("删除所有的%d之后：", test_to_delete_element);
+    ListTraverse(L,print);
+
     //测试销毁表
     DestroyList(L);
     printf("销毁L后：L.elem=%u L.length=%d L.listsize=%d\n",L.elem,L.length,L.listsize);
-    ======================================================================
-    */
 
-    SqList L;
-    ElemType e;
-    Status i;
-    int j;
-
-    // 初始化线性表
-    i = InitList(L);
-    cout << "L已初始化" << endl;
-
-    while (true)
-    {
-        displayMenu(); // 显示菜单
-        int choice;
-        cin >> choice;
-
-        switch (choice)
-        {
-        case 1:
-            cout << "请输入要插入的数据：";
-            cin >> j;
-            ListInsert(L, 1, j);
-            cout << "插入 " << j << " 后：" << endl;
-            displayList(L);
-            break;
-
-        case 2:
-            cout << "请输入要删除的数据：";
-            cin >> j;
-            ListDelete(L, LocateElem(L, j, comp), e);
-            cout << "删除 " << j << " 后：" << endl;
-            displayList(L);
-            break;
-
-        case 3:
-            cout << "请输入要删除的数据：";
-            cin >> j;
-            DeleteAllX(L, j);
-            cout << "删除所有 " << j << " 后：" << endl;
-            displayList(L);
-            break;
-
-        case 4:
-            DestroyList(L);
-            cout << "退出程序。" << endl;
-            return 0;
-
-        default:
-            cout << "无效的选项，请重新选择。" << endl;
-        }
-    }
     return 1;
-}
-
-// 显示菜单
-void displayMenu()
-{
-    system("cls"); // 清除屏幕
-    cout << "------------------------" << endl;
-    cout << "算法测试界面" << endl;
-    cout << "------------------------" << endl;
-    cout << "请选择操作：" << endl;
-    cout << "1. 插入数据" << endl;
-    cout << "2. 删除数据" << endl;
-    cout << "3. **删除线性表中所有带有固定值的数据元素**" << endl;
-    cout << "4. 退出" << endl;
-    cout << "------------------------" << endl;
-    cout << "请选择：";
-}
-
-// 显示线性表
-void displayList(const SqList &L)
-{
-    cout << "线性表数据：";
-    for (int i = 0; i < L.length; i++)
-    {
-        cout << setw(4) << L.elem[i];
-    }
-    cout << endl;
-    cout << "------------------------" << endl;
-    cout << "按 Enter 键继续...";
-    cin.ignore();
-    cin.get(); // 等待用户按 Enter 键
 }
