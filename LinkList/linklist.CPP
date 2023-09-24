@@ -235,7 +235,70 @@ void MergeList(LinkList &La, LinkList &Lb, LinkList &Lc)
 }
 
 //实现归并算法MergeList2，使重复的元素只保存一次
+void MergeList2(LinkList &La, LinkList &Lb, LinkList &Lc)
+{
+    //已知线性表La和Lb中的数据元素按值非递减排列
+    //归并La和Lb得到新的线性表Lc,Lc的数据元素也按值非递减排列
+    LNode * pa = La->next;
+    LNode * pb = Lb->next;
+    LNode * pc = La;
+    Lc = La; //用La的头节点作为Lc的头节点
 
+    while (pa && pb)
+    {
+        if (pa->data < pb->data)
+        {
+            pc->next = pa;
+            pc = pa;
+            pa = pa->next;
+        }
+        else if (pa->data > pb->data)
+        {
+            pc->next = pb;
+            pc = pb;
+            pb = pb->next;
+        }
+        else //两者相等直接需要两者都向后
+        {
+            pc->next = pa;
+            pc = pa;
+            pa = pa->next;
+            pb = pb->next;
+        }
+    }
+    pc->next = pa?pa:pb; //插入剩余段
+    free(Lb);
+}
+
+//就地逆转
+Status Reverse(LinkList &L)
+{
+    //这里要注意带头结点的不一样
+    LinkList p = L;
+    if (L->next == nullptr)
+    {
+        return ERROR; //合法性检查看是否是空表
+    }
+    LinkList q = L->next;
+    LinkList r = q->next;
+    while(q != nullptr)
+    {
+        r = q->next;
+        if (p == L) //说明位于第一轮 此时q为第一个有效节点
+        {
+            q->next = nullptr;
+        }
+        else
+        {
+            q->next = p;
+        }
+        p = q;
+        q = r;
+    }
+    L->next = p; //更新头结点
+
+    return OK;
+}
 
 int main()
 {
@@ -295,7 +358,35 @@ int main()
     printf("删除后的链表=");
     ListTraverse(Lc,print);
     DestroyList(Lc);
-    printf("销毁链表，该链表的长度为%d\n",ListLength(Lc));
+    printf("销毁链表，该链表的长度为%d\n\n",ListLength(Lc));
 
+    //初始化一个La用来测试原地逆转
+	InitList(La);
+    for(j=1;j<=4;j++)
+		ListInsert(La,j,a[j-1]);
+    printf("对单链表进行就地逆转操作：\n");
+    printf("逆转前：");
+    ListTraverse(La, print);
+    Reverse(La);
+    printf("逆转后：");
+    ListTraverse(La, print);
+    DestroyList(La);
+    printf("销毁链表，该链表的长度为%d\n\n",ListLength(La));
+
+    InitList(La);
+    for(j=1;j<=4;j++)
+		ListInsert(La,j,a[j-1]);
+	printf("La=");
+    ListTraverse(La,print);
+
+    InitList(Lb);
+    for(j=1;j<=7;j++)
+		ListInsert(Lb,j,b[j-1]);
+	printf("Lb=");
+    ListTraverse(Lb,print);
+
+	MergeList2(La,Lb,Lc);
+    printf("合并后的链表=");
+    ListTraverse(Lc,print);
    return 1;
  }
