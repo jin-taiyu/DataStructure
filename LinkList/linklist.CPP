@@ -417,11 +417,10 @@ int main()
     printf("第2个元素的值为:%d\n",e2);
     int index2 = LocateElem(La,e2);
     printf("值为%d的元素在链表中的位置是%d\n",e2,index2);
-
     DestroyList(La);
     printf("销毁链表，该链表的长度为%d\n",ListLength(La));
 
-
+    printf("\n");
     int j, a[4]={3,5,8,11}, b[7]={2,6,8,9,11,15,20};
 	InitList(La);
     for(j=1;j<=4;j++)
@@ -473,9 +472,11 @@ int main()
     ListTraverse(Lb,print);
 
 	MergeList2(La,Lb,Lc);
-    printf("合并后的链表=");
+    printf("去重合并后的链表=");
     ListTraverse(Lc,print);
 
+    printf("\n");
+    printf("准备开始测试分组翻转，请先选择创建的链表：\n");
     int test_n = 0;
     printf("请输入要创建的链表元素个数：");
     scanf("%d", &test_n);
@@ -486,7 +487,7 @@ int main()
     printf("请输入k的大小：");
     scanf("%d", &test_k);
     ReverseAsGroup(La, test_k);
-    printf("进行按组翻转后：");
+    printf("进行分组翻转后：");
     ListTraverse(La, print);
 
    return 1;
