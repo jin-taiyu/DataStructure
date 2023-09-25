@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1695562645 source:e:\projects\datastructure\linklist\linklist.cpp
+1695624371 source:e:\projects\datastructure\linklist\linklist.cpp
 	"public1.H"
 	"linklist.h"
 
@@ -15,5 +15,5 @@
 	<process.h>
 	<iostream>
 
-1695392906 e:\projects\datastructure\linklist\linklist.h
+1695567255 e:\projects\datastructure\linklist\linklist.h
 

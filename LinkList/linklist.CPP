@@ -108,6 +108,21 @@ Status GetElem(LinkList L,int i,ElemType &e)
     return OK;
  }
 
+LinkList GetElemPtr(LinkList L,int i)
+{
+    // L为带头结点的单链表的头指针。当第i个元素存在时,其值赋给e并返回OK,否则返回 ERROR
+    int j=1;
+    LinkList p=L->next;
+    while(p&&j<i)
+    {
+        p=p->next;
+        j++;
+    }
+    if(!p||j>i)
+        return ERROR;
+    return p;
+ }
+
 int LocateElem(LinkList L,ElemType e)
 {
     // 返回L中第1个值为e 的数据元素的位序，若这样的数据元素不存在,则返回值为0
@@ -300,6 +315,78 @@ Status Reverse(LinkList &L)
     return OK;
 }
 
+//选做：实现单链表每k个节点一组进行翻转
+Status ReverseAsGroup(LinkList &L, int k)
+{
+    int length = ListLength(L);
+    int iteration = length / k;
+
+    if (k > length)
+    {
+        return ERROR; //合法性检查
+    }
+
+    LinkList * heads = (LinkList *) malloc((iteration + 1) * sizeof(LinkList)); //多一个用来存储不是整数倍的最后一轮的头结点
+    LinkList * tails = (LinkList *) malloc((iteration + 1) * sizeof(LinkList));
+    //尝试找到每一段的头结点和尾节点
+    int heads_index = 0;
+    int tails_index = 0;
+    int nodes_count = 0;
+    LinkList temp = L;
+    while (temp != nullptr)
+    {
+        temp = temp->next;
+        nodes_count++;
+        if (temp != nullptr && (nodes_count - 1) % k == 0 && nodes_count <= (iteration * k)) //为子链表的头结点
+        {
+            heads[heads_index] = temp;
+            heads_index++;
+        }
+        if (temp != nullptr && (nodes_count) % k == 0 && nodes_count <= (iteration * k)) //为子链表的尾结点
+        {
+            tails[tails_index] = temp;
+            tails_index++;
+        }
+    }
+    heads[heads_index] = GetElemPtr(L, k * iteration + 1); //最后一段非整k的尾段
+    tails[tails_index] = GetElemPtr(L, length);
+
+    for (int i = 0; i < iteration; i++)
+    {
+        LinkList p = heads[i];
+        LinkList q = p->next;
+        LinkList r = q->next;
+
+        while (p != tails[i])
+        {
+            r = q->next;
+            q->next = p;
+            p = q;
+            q = r;
+        }
+
+        if (i == 0 && i != iteration - 1) //第一个子链表且不为最后一个要反转的子链表
+        {
+            L->next = tails[0];
+            heads[0]->next = tails[1];
+        }
+        else if (i == 0 && i == iteration - 1)
+        {
+            L->next = tails[0];
+            heads[0]->next = heads[1];
+        }
+        else if (i == iteration - 1)
+        {
+            heads[i]->next = heads[i + 1];
+        }
+        else
+        {
+            heads[i]->next = tails[i + 1];
+        }
+    }
+    return OK;
+}
+
 int main()
 {
     int n =5;
@@ -388,5 +475,19 @@ int main()
 	MergeList2(La,Lb,Lc);
     printf("合并后的链表=");
     ListTraverse(Lc,print);
+
+    int test_n = 0;
+    printf("请输入要创建的链表元素个数：");
+    scanf("%d", &test_n);
+    CreateList2(La, test_n);
+    printf("创建链表如下：");
+    ListTraverse(La, print);
+    int test_k = 0;
+    printf("请输入k的大小：");
+    scanf("%d", &test_k);
+    ReverseAsGroup(La, test_k);
+    printf("进行按组翻转后：");
+    ListTraverse(La, print);
+
    return 1;
  }
