@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1696689964 source:e:\projects\datastructure\recursivelinklist\linklist.cpp
+	"public1.H"
+	"linklist.h"
+
+1696684457 e:\projects\datastructure\recursivelinklist\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1696684457 e:\projects\datastructure\recursivelinklist\linklist.h
+
