@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1697800206 source:e:\projects\datastructure\ds4_1\josef.cpp
+	"SqQueue.h"
+
+1697726094 e:\projects\datastructure\ds4_1\sqqueue.h
+	"public1.h"
+
+1697718916 e:\projects\datastructure\ds4_1\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1697726119 source:e:\projects\datastructure\ds4_1\sqqueue.cpp
+	"SqQueue.h"
+
