@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="LinkQueue.cpp" />
+		<Unit filename="LinkQueue.h" />
+		<Unit filename="josef.cpp" />
+		<Unit filename="public1.H" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

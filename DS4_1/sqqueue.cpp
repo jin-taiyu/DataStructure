@@ -24,7 +24,9 @@ Status ClearQueue(SqQueue &Q) {
     // 将Q清为空队列
     QElemType temp;
     while (!QueueEmpty(Q)) {
-        DeQueue(Q, temp);
+        if (DeQueue(Q, temp) != OK) {
+            return ERROR; // 如果 DeQueue 操作失败，返回 ERROR
+        }
     }
     if (QueueEmpty(Q)) {return OK;}
     return ERROR;
