@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1697802298 source:e:\projects\datastructure\ds4_2\josef.cpp
+	"LinkQueue.h"
+
+1697802363 e:\projects\datastructure\ds4_2\linkqueue.h
+	"public1.h"
+
+1570503152 e:\projects\datastructure\ds4_2\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1697803199 source:e:\projects\datastructure\ds4_2\linkqueue.cpp
+	"LinkQueue.h"
+
