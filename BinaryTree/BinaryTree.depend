@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1698302323 source:c:\users\administrator\desktop\binarytree\tree.cpp
+	"BiTree.h"
+
+1698300635 c:\users\administrator\desktop\binarytree\bitree.h
+	"public1.h"
+
+1698300263 c:\users\administrator\desktop\binarytree\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1698302240 source:c:\users\administrator\desktop\binarytree\bitree.cpp
+	"BiTree.h"
+
+1698500238 source:e:\projects\datastructure\binarytree\tree.cpp
+	"BiTree.h"
+
+1698499466 e:\projects\datastructure\binarytree\bitree.h
+	"public1.h"
+
+1698500311 e:\projects\datastructure\binarytree\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+	<iostream>
+
+1698501320 source:e:\projects\datastructure\binarytree\bitree.cpp
+	"BiTree.h"
+
