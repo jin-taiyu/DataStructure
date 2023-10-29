@@ -105,3 +105,40 @@ Status DestroyBiTree(BiTree &T) {
     }
     return OK;
 }
+
+Status CountLayerNodes(BiTree T, int currentLayer, int Layer, int maxDepth, int& count) {
+    //合法性检验
+    if (Layer < 1 || Layer > maxDepth) return ERROR;
+    if (T == nullptr || currentLayer > Layer) return OK; // 剪枝,如果已经大于层次则可以不用再计算
+    if (currentLayer == Layer) count++;
+    CountLayerNodes(T->lchild, currentLayer + 1, Layer, maxDepth,count);
+    CountLayerNodes(T->rchild, currentLayer + 1, Layer, maxDepth, count);
+    return OK;
+}
+
+void FindParentNode(BiTree T, map<char, char> & parents) {
+    if (T == nullptr) return;
+    // 如果左孩子存在
+    if (T->lchild) {
+        parents[T->lchild->data] = T->data;
+        // 继续找
+        FindParentNode(T->lchild, parents);
+    }
+    if (T->rchild) {
+        parents[T->rchild->data] = T->data;
+        FindParentNode(T->rchild, parents);
+    }
+}
+
+int FindAncestors(BiTree T, map<char, char> & parents, char & desiredAnstNode) {
+    // 借助找父节点的函数
+    // 打表
+    FindParentNode(T, parents);
+    int count = 0;
+    while (parents[desiredAnstNode]) {
+        count++;
+        cout << parents[desiredAnstNode] << ' ';
+        desiredAnstNode = parents[desiredAnstNode];
+    }
+    return count;
+}

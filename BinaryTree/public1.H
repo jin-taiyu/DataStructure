@@ -13,6 +13,7 @@
  #include<process.h> // exit()
  #include<iostream> // cout,cin
  #include<iostream>
+ #include<map>
 using namespace std;
  // 函数结果状态代码
  #define TRUE 1
