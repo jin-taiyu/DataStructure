@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1698549535 source:e:\projects\datastructure\binarytreenonrecursive\tree.cpp
+	"BiTree.h"
+
+1698549485 e:\projects\datastructure\binarytreenonrecursive\bitree.h
+	"public1.h"
+
+1698549951 e:\projects\datastructure\binarytreenonrecursive\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+	<iostream>
+	<map>
+	<stack>
+
