@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1698904728 source:c:\users\administrator\desktop\binarytreequeue\linkqueue.cpp
+	"LinkQueue.h"
+
+1698904728 c:\users\administrator\desktop\binarytreequeue\linkqueue.h
+	"public1.h"
+	"BiTree.h"
+
+1698904881 c:\users\administrator\desktop\binarytreequeue\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1698904728 c:\users\administrator\desktop\binarytreequeue\bitree.h
+	"public1.h"
+
+1698907369 source:c:\users\administrator\desktop\binarytreequeue\main.cpp
+	"BiTree.h"
+
+1698907518 source:c:\users\administrator\desktop\binarytreequeue\bitree.cpp
+	"BiTree.h"
+	"LinkQueue.h"
+
+1698904728 source:e:\projects\datastructure\binarytreequeue\linkqueue.cpp
+	"LinkQueue.h"
+
+1698904728 e:\projects\datastructure\binarytreequeue\linkqueue.h
+	"public1.h"
+	"BiTree.h"
+
+1698904881 e:\projects\datastructure\binarytreequeue\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1698904728 e:\projects\datastructure\binarytreequeue\bitree.h
+	"public1.h"
+
+1698907369 source:e:\projects\datastructure\binarytreequeue\main.cpp
+	"BiTree.h"
+
+1698918864 source:e:\projects\datastructure\binarytreequeue\bitree.cpp
+	"BiTree.h"
+	"LinkQueue.h"
+
