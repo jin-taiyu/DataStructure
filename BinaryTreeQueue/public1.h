@@ -1,3 +1,5 @@
+#ifndef HEADER_PUBLIC
+#define HEADER_PUBLIC
  // c1.h (程序名)
  #include<string.h>
  #include<ctype.h>
@@ -10,6 +12,8 @@
  #include<process.h> // exit()
  //#include<iostream.h> // cout,cin
  #include<iostream>
+ #include<map>
+ #include<vector>
 using namespace std;
  // 函数结果状态代码
  #define TRUE 1
@@ -22,4 +26,6 @@ using namespace std;
  typedef int Status;
 
 
+
+#endif // header guard
 

@@ -1,3 +1,6 @@
+#ifndef HEADER_BITREE
+#define HEADER_BITREE
+
 
 #include "public1.h"
 
@@ -25,14 +28,8 @@ Status LevelOrderTraverse(BiTree T,void(*Visit)(TElemType));   /* 层次遍历二叉树
 Status IsCompleteTree(BiTree T); /* 判断一棵二叉树是否是完全二叉树 */
 Status PrintTree(BiTree bt, int nLayer);  /* 按竖向树状打印的二叉树 */
 Status DestroyBiTree(BiTree &T); /* 销毁二叉树 */
-
-
-
-
-
-
-
-
-
-
+Status FindParent(BiTree &T, TElemType x, TElemType &parent);
+void FindParentNode(BiTree T, map<TElemType, TElemType> &parents);
+Status FindNearAncestors(BiTree T, map<TElemType, TElemType> &parents, TElemType &nodeFirst, TElemType &nodeSecond, TElemType &nearAncestor);
+#endif // header guard
 

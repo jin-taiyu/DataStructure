@@ -10,11 +10,20 @@ BiTree CreateTree(TElemType A[],TElemType B[],int ha,int la,int hb,int lb) {
 
     // 创建根节点
     BiTNode* root = (BiTNode*)malloc(sizeof(BiTNode));
+    if (root == nullptr) exit(OVERFLOW);
     root->data = A[ha];
 
     // 在中序遍历数组中找到根节点的位置
     int rootIndex = hb;
     while (rootIndex <= lb && B[rootIndex] != A[ha]) rootIndex++;
+
+    ////////////////////////////////////////////////////////
+    //           增加一点健壮性            //
+    //////////////////////////////////////////////////////
+    if (rootIndex > lb) {
+        free(root);
+    return NULL;  // 或其他错误处理
+    }
 
     // 计算左子树和右子树的节点数量
     int leftLength = rootIndex - hb;
@@ -47,6 +56,7 @@ Status LevelOrderTraverse(BiTree T,void(*Visit)(TElemType)) {
             EnQueue(Q, tmp->rchild);
         }
     }
+    DestroyQueue(Q); // 差点忘了释放空间
     return OK;
 }
 
@@ -74,6 +84,7 @@ Status IsCompleteTree(BiTree T) {
         BiTree tmp;
         DeQueue(Q, tmp);
         if (flag == 1 && tmp != nullptr) {
+            DestroyQueue(Q);
             return FALSE;
         }
         if (tmp == nullptr) {
@@ -84,6 +95,7 @@ Status IsCompleteTree(BiTree T) {
             EnQueue(Q, tmp->rchild);
         }
     }
+    DestroyQueue(Q);
     return TRUE;
 }
 
@@ -98,4 +110,79 @@ Status DestroyBiTree(BiTree &T) {
         T = nullptr;
     }
     return OK;
+}
+
+Status FindParent(BiTree &T, TElemType x, TElemType &parent) {
+    LinkQueue Q;
+    InitQueue(Q);
+    EnQueue(Q, T);
+    while (!QueueEmpty(Q)) {
+        BiTree tmp;
+        DeQueue(Q, tmp);
+        if (tmp) {
+            EnQueue(Q, tmp->lchild);
+            EnQueue(Q, tmp->rchild);
+            // 利用短路原则先判断左右子节点是否为空
+            if (tmp->lchild != nullptr && tmp->lchild->data == x) {
+                parent = tmp->data;
+                // 在所有函数出口布置队列销毁
+                DestroyQueue(Q);
+                return OK;
+            }
+            if (tmp->rchild != nullptr && tmp->rchild->data == x) {
+                parent = tmp->data;
+                DestroyQueue(Q);
+                return OK;
+            }
+        }
+    }
+    DestroyQueue(Q);
+    return ERROR;
+}
+
+// 代码复用 用上次实验的代码
+void FindParentNode(BiTree T, map<TElemType, TElemType> &parents) {
+    if (T == nullptr) return;
+    // 如果左孩子存在
+    if (T->lchild) {
+        parents[T->lchild->data] = T->data;
+        // 继续找
+        FindParentNode(T->lchild, parents);
+    }
+    if (T->rchild) {
+        parents[T->rchild->data] = T->data;
+        FindParentNode(T->rchild, parents);
+    }
+}
+
+Status FindNearAncestors(BiTree T, map<TElemType, TElemType> &parents, TElemType &nodeFirst, TElemType &nodeSecond, TElemType &nearAncestor) {
+    // 借助找父节点的函数
+    // 打表
+    FindParentNode(T, parents);
+    vector<TElemType> prevFirst;
+    vector<TElemType> prevSecond;
+    // 把自己放进去
+    prevFirst.push_back(nodeFirst);
+    prevSecond.push_back(nodeSecond);
+
+    TElemType first = nodeFirst;
+    TElemType second = nodeSecond;
+    while (parents[first]) {
+        prevFirst.push_back(parents[first]);
+        first = parents[first];
+    }
+    while (parents[second]) {
+        prevSecond.push_back(parents[second]);
+        second = parents[second];
+    }
+    // 开始逐个比较
+    for (vector<TElemType>::iterator i = prevFirst.begin(); i < prevFirst.end(); i++) {
+        for (vector<TElemType>::iterator j = prevSecond.begin(); j < prevSecond.end(); j++) {
+            if (*i == *j) {
+                nearAncestor = *i;
+                return OK;
+            }
+        }
+    }
+    return ERROR;
 }

@@ -2,7 +2,7 @@
 
 int main()
 {
-	BiTree T;
+    BiTree T;
 
     int ha=0;  int la=8;
 	int hb=0;  int lb=8;
@@ -23,6 +23,29 @@ int main()
 	else
         printf("这不是一棵完全二叉树\n");
 
+    TElemType findElem;
+    TElemType findResult;
+	cout << "请输入要查找双亲的结点:"  << endl;
+	cin >> findElem;
+	if (FindParent(T, findElem, findResult)) {
+        cout << findElem << "的父结点为" << findResult << endl;
+	}
+	else {
+        cout << "输入根节点或不存在的节点" << endl;
+	}
+
+    TElemType nodeFirst;
+    TElemType nodeSecond;
+    TElemType nearAncestor;
+    map<TElemType, TElemType> parents;
+    cout << "请输入要查找最近祖先的两个结点(A B):" << endl;
+    cin >> nodeFirst >> nodeSecond;
+    if (FindNearAncestors(T, parents, nodeFirst, nodeSecond, nearAncestor)) {
+        cout << nodeFirst << "与" << nodeSecond << "最近的共同祖先为" << nearAncestor << endl;
+    }
+    else {
+        cout << "两者可能并没有共同祖先" << endl;
+    }
 	DestroyBiTree(T); // 销毁二叉树T
 	return 1;
 }

@@ -35,7 +35,7 @@
 	"public1.h"
 	"BiTree.h"
 
-1698904881 e:\projects\datastructure\binarytreequeue\public1.h
+1698937791 e:\projects\datastructure\binarytreequeue\public1.h
 	<string.h>
 	<ctype.h>
 	<malloc.h>
@@ -46,14 +46,16 @@
 	<math.h>
 	<process.h>
 	<iostream>
+	<map>
+	<vector>
 
-1698904728 e:\projects\datastructure\binarytreequeue\bitree.h
+1698938266 e:\projects\datastructure\binarytreequeue\bitree.h
 	"public1.h"
 
-1698907369 source:e:\projects\datastructure\binarytreequeue\main.cpp
+1698938499 source:e:\projects\datastructure\binarytreequeue\main.cpp
 	"BiTree.h"
 
-1698918864 source:e:\projects\datastructure\binarytreequeue\bitree.cpp
+1698938878 source:e:\projects\datastructure\binarytreequeue\bitree.cpp
 	"BiTree.h"
 	"LinkQueue.h"
 
