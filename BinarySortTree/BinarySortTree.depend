@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1700117214 source:c:\users\administrator\desktop\binarysorttree\bst.cpp
+	"BiTree.h"
+	"public1.h"
+	"BST.h"
+
+1700114855 c:\users\administrator\desktop\binarysorttree\bitree.h
+
+1700114855 c:\users\administrator\desktop\binarysorttree\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1700114855 c:\users\administrator\desktop\binarysorttree\bst.h
+
+1700114855 source:c:\users\administrator\desktop\binarysorttree\find.cpp
+	"public1.h"
+	"BiTree.h"
+	"BST.h"
+
+1700208354 source:e:\projects\datastructure\binarysorttree\bst.cpp
+	"BiTree.h"
+	"public1.h"
+	"BST.h"
+
+1700208354 e:\projects\datastructure\binarysorttree\bitree.h
+
+1700208354 e:\projects\datastructure\binarysorttree\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+
+1700208354 e:\projects\datastructure\binarysorttree\bst.h
+
+1700209537 source:e:\projects\datastructure\binarysorttree\find.cpp
+	"public1.h"
+	"BiTree.h"
+	"BST.h"
+
