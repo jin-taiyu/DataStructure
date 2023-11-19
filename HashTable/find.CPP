@@ -37,7 +37,9 @@ unsigned Hash(KeyType K) {
      // 开放定址法处理冲突
     // 公式Hi=(H(key)+di)MOD m
     extern int m;
-    p = (p + d) % m;
+    // 对公式做了一定程度的修改
+    // 对m取余确保不越界
+    p = (p + 1) % m;
 }
 
 Status SearchHash(HashTable H,KeyType K,int &p,int &c) {
@@ -83,7 +85,8 @@ void RecreateHashTable(HashTable &H) {
 Status InsertHash(HashTable &H,ElemType e) {
     // 查找不成功时插入数据元素e到开放定址哈希表H中，并返回OK；
     // 若冲突次数过大，则重建哈希表，算法9.18
-    int p, c = 0;
+    int c = 0;
+    int p = Hash(e.key);
     // 表中已有与e相同关键字的元素
     if (SearchHash(H, e.key, p, c))
         return DUPLICATE;
