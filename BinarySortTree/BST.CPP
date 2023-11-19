@@ -94,6 +94,7 @@ Status DeleteBST(BiTree &T,KeyType key) {
         else if (LT(key, T->data.key)) return DeleteBST(T->lchild, key);
         else return DeleteBST(T->rchild, key);
     }
+    return OK;
 }
 
 void TraverseDSTable(BiTree DT,void(*Visit)(ElemType)) {
@@ -105,4 +106,28 @@ void TraverseDSTable(BiTree DT,void(*Visit)(ElemType)) {
         Visit(DT->data); // 再访问根结点
         TraverseDSTable(DT->rchild,Visit); // 最后中序遍历右子树
     }
+}
+
+void RecursiveTraverse(BiTree DT, priority_queue<int, vector<int>, greater<int>> &minHeap) {
+    if(DT) {
+        RecursiveTraverse(DT->lchild, minHeap);
+        minHeap.push(DT->data.others);
+        RecursiveTraverse(DT->rchild, minHeap);
+    }
+}
+
+int kthSmallest(BiTree DT, int kth, priority_queue<int, vector<int>, greater<int>> &minHeap) {
+    // 递归访问把相关数据放入优先队列
+    RecursiveTraverse(DT, minHeap);
+    int tmp;
+    int count = 0;
+    while (!minHeap.empty()) {
+        tmp = minHeap.top();
+        minHeap.pop();
+        count++;
+        if (count == kth) {
+            return tmp;
+        }
+    }
+    return -1;
 }

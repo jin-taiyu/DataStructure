@@ -25,14 +25,14 @@
 	"BiTree.h"
 	"BST.h"
 
-1700208354 source:e:\projects\datastructure\binarysorttree\bst.cpp
+1700374967 source:e:\projects\datastructure\binarysorttree\bst.cpp
 	"BiTree.h"
 	"public1.h"
 	"BST.h"
 
 1700208354 e:\projects\datastructure\binarysorttree\bitree.h
 
-1700208354 e:\projects\datastructure\binarysorttree\public1.h
+1700363157 e:\projects\datastructure\binarysorttree\public1.h
 	<string.h>
 	<ctype.h>
 	<malloc.h>
@@ -43,10 +43,11 @@
 	<math.h>
 	<process.h>
 	<iostream>
+	<queue>
 
-1700208354 e:\projects\datastructure\binarysorttree\bst.h
+1700363157 e:\projects\datastructure\binarysorttree\bst.h
 
-1700209537 source:e:\projects\datastructure\binarysorttree\find.cpp
+1700374060 source:e:\projects\datastructure\binarysorttree\find.cpp
 	"public1.h"
 	"BiTree.h"
 	"BST.h"

@@ -1,3 +1,6 @@
+#ifndef HEADER_C203DEB74217C778
+#define HEADER_C203DEB74217C778
+
  #include<string.h>
  #include<ctype.h>
  #include<malloc.h> // malloc()等
@@ -8,6 +11,7 @@
  #include<math.h> // floor(),ceil(),abs()
  #include<process.h> // exit()
  #include<iostream>
+ #include <queue>
  using namespace std;
  // 函数结果状态代码
  #define TRUE 1
@@ -23,4 +27,5 @@
  #define LQ(a,b) ((a)<=(b))
 
 
+#endif // header guard 
 
